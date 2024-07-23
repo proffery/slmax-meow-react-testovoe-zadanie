@@ -50,7 +50,7 @@ function Header() {
                             aria-label="burger-menu"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
+                            onClick={() => handleOpenNavMenu}
                         >
                             <MenuIcon sx={{
                                 color: 'var(--text-color-secondary)'
@@ -115,7 +115,13 @@ function Header() {
                                 href={page.link}
                                 key={page.label}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'var(--text-color-secondary)', display: 'block', fontFamily: 'var(--font-text)' }}
+                                sx={{
+                                    my: 2,
+                                    color: 'var(--text-color-secondary)',
+                                    display: 'block',
+                                    fontFamily: 'var(--font-text)',
+                                    fontSize: 'var(--font-size-desktop)'
+                            }}
                             >
                                 {page.label}
                             </Button>

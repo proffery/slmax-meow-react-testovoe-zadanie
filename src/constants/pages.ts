@@ -7,6 +7,10 @@ export type Page = {
 
 export const pages: Page[] = [
     {
+        label: 'EPISODES',
+        link: routes.episodes
+    },
+    {
         label: 'CHARACTERS',
         link: routes.characters
     },
