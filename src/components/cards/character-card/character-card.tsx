@@ -15,7 +15,8 @@ type Props = {
 export default function CharacterCard(props: Props) {
     const {
         image, name, gender, status, species,
-        id,location, origin, type
+        id,location, origin,
+        type, episode
     } = props.character;
 
     return (
@@ -29,8 +30,8 @@ export default function CharacterCard(props: Props) {
                 }}
             />
             <div className={s.cardContent}>
-            <h2>{name}</h2>
-                <h3>INFO:</h3>
+                <h2>{name}</h2>
+                <h3>Info:</h3>
                 <div className={s.tagWrapper}>
                     <span className={s.tag}>{status}</span>
                     <span className={s.tag}>{gender}</span>
@@ -40,14 +41,24 @@ export default function CharacterCard(props: Props) {
                           href={routes.locations + '/' + getLastNumberFromUrl(origin.url)}
                     >{origin.name}</Link>
                 </div>
-                <h3>location:</h3>
+                <h3>Location:</h3>
                 <Link className={s.tag}
                       href={routes.locations + '/' + getLastNumberFromUrl(location.url)}
                 >{location.name}</Link>
+                <h3>Episodes:</h3>
+                <div className={s.tagWrapper}>
+                    {episode.map(episod =>
+                        <Link href={routes.episodes + '/' + getLastNumberFromUrl(episod)} key={episod} className={s.tag}
+                        >{getLastNumberFromUrl(episod)}</Link>
+                    )}
+                </div>
             </div>
             <CardActions>
                 <Button size="small"
-                        sx={{fontFamily: 'var(--font-text)'}}
+                        sx={{
+                            fontFamily: 'var(--font-text)',
+                            color: 'var(--text-color-secondary)',
+                        }}
                         component={Link}
                         href={routes.characters + '/' + id}
                 >Learn More</Button>

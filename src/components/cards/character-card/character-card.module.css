@@ -6,7 +6,7 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     width: 30%;
-    max-width: 350px;
+    max-width: 400px;
     min-width: 200px;
     aspect-ratio: 9/16;
     background-color: var(--background-light);
