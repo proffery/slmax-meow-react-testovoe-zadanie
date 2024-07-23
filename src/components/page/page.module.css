@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 100px 24px 60px;
+  gap: 24px;
   position: relative;
   min-height: calc(100vh - var(--footer-height-desktop));
 }

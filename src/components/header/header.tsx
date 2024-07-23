@@ -8,14 +8,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import {ChangeEvent, useState} from 'react'
+import {useState} from 'react'
 import Link from 'next/link';
 import {Page, pages} from '@/constants/pages';
 
 function Header() {
-    const [anchorElNav, setAnchorElNav] = useState<HTMLButtonElement | null>(null);
+    const [anchorElNav, setAnchorElNav] = useState<any | null>(null);
 
-    const handleOpenNavMenu = (event: ChangeEvent<HTMLButtonElement>) => {
+    const handleOpenNavMenu = (event: any) => {
         setAnchorElNav(event.currentTarget);
     };
 
@@ -50,7 +50,7 @@ function Header() {
                             aria-label="burger-menu"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={() => handleOpenNavMenu}
+                            onClick={(event) => handleOpenNavMenu(event)}
                         >
                             <MenuIcon sx={{
                                 color: 'var(--text-color-secondary)'

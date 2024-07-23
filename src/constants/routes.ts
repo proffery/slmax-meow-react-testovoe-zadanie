@@ -1,5 +1,6 @@
-export enum routes {
-    episodes = '/',
-    characters = '/characters',
-    locations = '/locations'
-}
+export const routes = {
+    base: '/' ,
+    episodes: '/episodes',
+    characters: '/characters',
+    locations: '/locations'
+} as const

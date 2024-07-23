@@ -1,0 +1,37 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    width: 30%;
+    max-width: 350px;
+    min-width: 200px;
+    aspect-ratio: 9/16;
+    background-color: var(--background-light);
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+}
+
+.tagWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+}
+
+.tag {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2px 6px;
+    font-size: var(--font-size-mobile);
+    width: fit-content;
+}
