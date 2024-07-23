@@ -11,6 +11,10 @@
   --link-color: #03A945;
   --header-color: #00B3CA;
   --border-color: #ABC14C;
+  --footer-height-desktop: 35px;
+  --footer-height-mobile: 25px;
+  --font-size-desktop: 20px;
+  --font-size-mobile: 12px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,11 +47,20 @@ body {
       var(--background-dark)
     )
     var(--background-light);
+  font-family: var(--font-text), sans-serif;
+  font-size: var(--font-size-desktop);
+  @media (max-width: 576px) {
+      font-size: var(--font-size-mobile);
+  }
 }
 
 a {
   color: var(--link-color);
   text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

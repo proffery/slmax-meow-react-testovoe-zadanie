@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 24px 60px;
+  position: relative;
+  min-height: calc(100vh - var(--footer-height-desktop));
+}
+
+.main::before {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  top: 70%;
+  right: 0;
+  background: url("../../assets/Rick_and_Morty.svg") no-repeat left bottom;
+  background-size: 100%;
+  z-index: -1;
+  opacity: .1;
+  transform: rotate(-30deg);
+  transform-origin: left bottom;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .main {
+    padding: 80px 16px 40px;
+    min-height: calc(100vh - var(--footer-height-mobile));
+  }
+}
