@@ -17,6 +17,11 @@ const nextConfig = {
             destination: '/episodes/page/1',
             permanent: true,
         },
+        {
+            source: '/locations',
+            destination: '/locations/page/1',
+            permanent: true,
+        },
         ]
 }
 
