@@ -23,62 +23,62 @@ export default async function CharacterPage({params}:Props) {
     )
 
     return (
-    <Page>
-      <h1>{characterData?.name}:</h1>
-        <CardMedia
-            component="img"
-            alt={characterData?.name}
-            src={characterData?.image}
-            sx={{
-                maxWidth: 'var(--max-width)',
-                borderRadius: 'var(--border-radius)',
-            }}
-        />
-        <div className={s.cardsWrapper}>
-            <h2>Episodes:</h2>
-            <div className={s2.tagWrapper}>
-                {characterData?.episode.map(episod =>
-                    <Link href={routes.episodes + '/' + getLastNumberFromUrl(episod)} key={episod} className={s2.tag}
-                    >{getLastNumberFromUrl(episod)}</Link>
-                )}
-            </div>
-            <h2>Status:</h2>
-            <div className={s2.tagWrapper}>
-                <span className={s2.tag}>{characterData?.status}</span>
-            </div>
-            <h2>Gender:</h2>
-            <div className={s2.tagWrapper}>
-                <span className={s2.tag}>{characterData?.gender}</span>
-            </div>
-            <h2>Species:</h2>
-            <div className={s2.tagWrapper}>
-                <span className={s2.tag}>{characterData?.species}</span>
-            </div>
-            {characterData?.type && <>
-                <h2>Type:</h2>
+        <Page>
+          <h1>{characterData?.name}:</h1>
+            <CardMedia
+                component="img"
+                alt={characterData?.name}
+                src={characterData?.image}
+                sx={{
+                    maxWidth: 'var(--max-width)',
+                    borderRadius: 'var(--border-radius)',
+                }}
+            />
+            <div className={s.cardsWrapper}>
+                <h2>Episodes:</h2>
                 <div className={s2.tagWrapper}>
-                <span className={s2.tag}>{characterData.type}</span>
+                    {characterData?.episode.map(episod =>
+                        <Link href={routes.episodes + '/' + getLastNumberFromUrl(episod)} key={episod} className={s2.tag}
+                        >{getLastNumberFromUrl(episod)}</Link>
+                    )}
                 </div>
-            </>}
-            <h2>Origin:</h2>
-            <div className={s2.tagWrapper}>
-                {characterData?.origin.url
-                    ? <Link className={s2.tag}
-                          href={routes.locations + '/' + getLastNumberFromUrl(characterData.origin.url)}
-                    >
-                        {characterData?.origin.name}</Link>
-                    : <span className={s2.tag}>{characterData?.origin.name}</span>}
+                <h2>Status:</h2>
+                <div className={s2.tagWrapper}>
+                    <span className={s2.tag}>{characterData?.status}</span>
+                </div>
+                <h2>Gender:</h2>
+                <div className={s2.tagWrapper}>
+                    <span className={s2.tag}>{characterData?.gender}</span>
+                </div>
+                <h2>Species:</h2>
+                <div className={s2.tagWrapper}>
+                    <span className={s2.tag}>{characterData?.species}</span>
+                </div>
+                {characterData?.type && <>
+                    <h2>Type:</h2>
+                    <div className={s2.tagWrapper}>
+                    <span className={s2.tag}>{characterData.type}</span>
+                    </div>
+                </>}
+                <h2>Origin:</h2>
+                <div className={s2.tagWrapper}>
+                    {characterData?.origin.url
+                        ? <Link className={s2.tag}
+                              href={routes.locations + '/' + getLastNumberFromUrl(characterData.origin.url)}
+                        >
+                            {characterData?.origin.name}</Link>
+                        : <span className={s2.tag}>{characterData?.origin.name}</span>}
+                </div>
+                <h2>Current location:</h2>
+                <div className={s2.tagWrapper}>
+                    {characterData?.location.url
+                        ? <Link className={s2.tag}
+                              href={routes.locations + '/' + getLastNumberFromUrl(characterData.location.url)}
+                        >
+                            {characterData?.location.name}</Link>
+                        : <span className={s2.tag}>{characterData?.location.name}</span>}
+                </div>
             </div>
-            <h2>Current location:</h2>
-            <div className={s2.tagWrapper}>
-                {characterData?.location.url
-                    ? <Link className={s2.tag}
-                          href={routes.locations + '/' + getLastNumberFromUrl(characterData.location.url)}
-                    >
-                        {characterData?.location.name}</Link>
-                    : <span className={s2.tag}>{characterData?.location.name}</span>}
-            </div>
-        </div>
-    </Page>
+        </Page>
     )
 }

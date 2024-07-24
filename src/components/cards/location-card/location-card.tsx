@@ -21,15 +21,13 @@ export default function LocationCard(props: Props) {
             <div className={s.cardContent}>
                 <h2>{name}</h2>
                 <div className={s.tagWrapper}>
-                <h3>location Info:</h3>
+                    <h3>location Info:</h3>
                     <span className={s.tag}>{name}</span>
                     <span className={s.tag}>{type}</span>
                     <span className={s.tag}>{dimension}</span>
                 </div>
                 <div className={s.tagWrapper}>
-                </div>
-                <div className={s.tagWrapper}>
-                <h3>Residents:</h3>
+                    <h3>Residents:</h3>
                     {residents.map(resident =>
                         <Link href={routes.characters + '/' + getLastNumberFromUrl(resident)} key={resident} className={s.tag}
                         >{getLastNumberFromUrl(resident)}</Link>

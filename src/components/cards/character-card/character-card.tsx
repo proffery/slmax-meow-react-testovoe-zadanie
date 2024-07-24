@@ -32,7 +32,7 @@ export default function CharacterCard(props: Props) {
             <div className={s.cardContent}>
                 <h2>{name}</h2>
                 <div className={s.tagWrapper}>
-                <h3>Info:</h3>
+                    <h3>Info:</h3>
                     <span className={s.tag}>{status}</span>
                     <span className={s.tag}>{gender}</span>
                     <span className={s.tag}>{species}</span>
@@ -42,13 +42,13 @@ export default function CharacterCard(props: Props) {
                     >{origin.name}</Link>
                 </div>
                 <div className={s.tagWrapper}>
-                <h3>Location:</h3>
-                <Link className={s.tag}
-                      href={routes.locations + '/' + getLastNumberFromUrl(location.url)}
-                >{location.name}</Link>
+                    <h3>Location:</h3>
+                    <Link className={s.tag}
+                          href={routes.locations + '/' + getLastNumberFromUrl(location.url)}
+                    >{location.name}</Link>
                 </div>
                 <div className={s.tagWrapper}>
-                <h3>Episodes:</h3>
+                    <h3>Episodes:</h3>
                     {episode.map(episod =>
                         <Link href={routes.episodes + '/' + getLastNumberFromUrl(episod)} key={episod} className={s.tag}
                         >{getLastNumberFromUrl(episod)}</Link>

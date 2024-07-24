@@ -21,17 +21,17 @@ export default function EpisodesCard(props: Props) {
             <div className={s.cardContent}>
                 <h2>{name}</h2>
                 <div className={s.tagWrapper}>
-                <h3>Episode Info:</h3>
+                    <h3>Episode Info:</h3>
                     <span className={s.tag}>{name}</span>
                     <span className={s.tag}>{air_date}</span>
                     <span className={s.tag}>{episode}</span>
                 </div>
                 <div className={s.tagWrapper}>
                     <h3>Characters:</h3>
-                        {characters.map(character =>
-                            <Link href={routes.characters + '/' + getLastNumberFromUrl(character)} key={character} className={s.tag}
-                            >{getLastNumberFromUrl(character)}</Link>
-                        )}
+                    {characters.map(character =>
+                        <Link href={routes.characters + '/' + getLastNumberFromUrl(character)} key={character} className={s.tag}
+                        >{getLastNumberFromUrl(character)}</Link>
+                    )}
                 </div>
             </div>
             <CardActions>
