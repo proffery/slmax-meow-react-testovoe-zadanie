@@ -1,13 +1,14 @@
 'use server'
 import {Page} from '@/components/page/page'
 import {getData} from '@/utils/get-data'
-import {Episode} from '@/api/api-types'
+import {Episode, EpisodesResponse} from '@/api/api-types'
 import {apiEndpoints} from '@/api/api-endpoints'
 import s from '../../../components/cards/card.module.css'
 import Link from 'next/link'
 import {routes} from '@/constants/routes'
 import {getLastNumberFromUrl} from '@/utils/get-last-number-from-url'
 import * as React from 'react'
+import {generateStaticParamsArray} from '@/utils/generate-static-params-array'
 
 type Props = {
     params: {
@@ -15,9 +16,17 @@ type Props = {
     }
 }
 
+export const generateStaticParams  = async () => {
+    const pageData = await getData<EpisodesResponse>(apiEndpoints.episodesByPage(1),
+        {revalidate: 60}
+    )
+    const episodesCount = pageData?.info.count
+    return generateStaticParamsArray("episodeId", episodesCount)
+}
+
 export default async function EpisodePage({params}:Props) {
     const episodeData = await getData<Episode>(apiEndpoints.episodeById(+params.episodeId),
-        {cache: 'no-store'}
+        {revalidate: 60}
     )
 
     return (

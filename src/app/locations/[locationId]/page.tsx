@@ -7,7 +7,8 @@ import Link from 'next/link'
 import {routes} from '@/constants/routes'
 import {getLastNumberFromUrl} from '@/utils/get-last-number-from-url'
 import * as React from 'react'
-import {LocationType} from '@/api/api-types'
+import {LocationsResponse, LocationType} from '@/api/api-types'
+import {generateStaticParamsArray} from '@/utils/generate-static-params-array'
 
 type Props = {
     params: {
@@ -15,9 +16,17 @@ type Props = {
     }
 }
 
+export const generateStaticParams  = async () => {
+    const pageData = await getData<LocationsResponse>(apiEndpoints.episodesByPage(1),
+        {revalidate: 60}
+    )
+    const locationsCount = pageData?.info.count
+    return generateStaticParamsArray("locationId", locationsCount)
+}
+
 export default async function LocationPage({params}:Props) {
     const locationData = await getData<LocationType>(apiEndpoints.locationById(+params.locationId),
-        {cache: 'no-store'}
+        {revalidate: 60}
     )
 
     return (

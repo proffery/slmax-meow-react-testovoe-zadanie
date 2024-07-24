@@ -1,7 +1,7 @@
 'use server'
 import {Page} from '@/components/page/page'
 import {getData} from '@/utils/get-data'
-import {Character} from '@/api/api-types'
+import {Character, CharactersResponse} from '@/api/api-types'
 import {apiEndpoints} from '@/api/api-endpoints'
 import s from '../../../app/pages.module.css'
 import s2 from '../../../components/cards/card.module.css'
@@ -10,6 +10,7 @@ import {routes} from '@/constants/routes'
 import {getLastNumberFromUrl} from '@/utils/get-last-number-from-url'
 import * as React from 'react'
 import CardMedia from '@mui/material/CardMedia'
+import {generateStaticParamsArray} from '@/utils/generate-static-params-array'
 
 type Props = {
     params: {
@@ -17,9 +18,17 @@ type Props = {
     }
 }
 
+export const generateStaticParams  = async () => {
+    const pageData = await getData<CharactersResponse>(apiEndpoints.charactersByPage(1),
+        {revalidate: 60}
+    )
+    const charactersCount = pageData?.info.count
+    return generateStaticParamsArray("charId", charactersCount)
+}
+
 export default async function CharacterPage({params}:Props) {
     const characterData = await getData<Character>(apiEndpoints.characterById(+params.charId),
-        {cache: 'no-store'}
+        {revalidate: 60}
     )
 
     return (
