@@ -18,7 +18,7 @@ type Props = {
 
 export const generateStaticParams  = async () => {
     const pageData = await getData<LocationsResponse>(apiEndpoints.episodesByPage(1),
-        {revalidate: 60}
+        {revalidate: 600}
     )
     const locationsCount = pageData?.info.count
     return generateStaticParamsArray("locationId", locationsCount)
@@ -26,7 +26,7 @@ export const generateStaticParams  = async () => {
 
 export default async function LocationPage({params}:Props) {
     const locationData = await getData<LocationType>(apiEndpoints.locationById(+params.locationId),
-        {revalidate: 60}
+        {revalidate: 600}
     )
 
     return (

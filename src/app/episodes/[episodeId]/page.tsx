@@ -18,7 +18,7 @@ type Props = {
 
 export const generateStaticParams  = async () => {
     const pageData = await getData<EpisodesResponse>(apiEndpoints.episodesByPage(1),
-        {revalidate: 60}
+        {revalidate: 600}
     )
     const episodesCount = pageData?.info.count
     return generateStaticParamsArray("episodeId", episodesCount)
@@ -26,7 +26,7 @@ export const generateStaticParams  = async () => {
 
 export default async function EpisodePage({params}:Props) {
     const episodeData = await getData<Episode>(apiEndpoints.episodeById(+params.episodeId),
-        {revalidate: 60}
+        {revalidate: 600}
     )
 
     return (

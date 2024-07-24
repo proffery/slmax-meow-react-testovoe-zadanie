@@ -20,7 +20,7 @@ type Props = {
 
 export const generateStaticParams  = async () => {
     const pageData = await getData<CharactersResponse>(apiEndpoints.charactersByPage(1),
-        {revalidate: 60}
+        {revalidate: 600}
     )
     const charactersCount = pageData?.info.count
     return generateStaticParamsArray("charId", charactersCount)
@@ -28,7 +28,7 @@ export const generateStaticParams  = async () => {
 
 export default async function CharacterPage({params}:Props) {
     const characterData = await getData<Character>(apiEndpoints.characterById(+params.charId),
-        {revalidate: 60}
+        {revalidate: 600}
     )
 
     return (
