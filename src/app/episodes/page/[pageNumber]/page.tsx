@@ -13,7 +13,7 @@ type Props = {
     }
 }
 
-export default async function CharactersPage({params}:Props) {
+export default async function EpisodePage({params}:Props) {
     const episodesData = await getData<EpisodesResponse>(apiEndpoints.episodesByPage(+params.pageNumber),
         {cache: 'no-store'}
     )

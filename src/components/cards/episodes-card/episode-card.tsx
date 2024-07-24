@@ -27,13 +27,11 @@ export default function EpisodesCard(props: Props) {
                     <span className={s.tag}>{episode}</span>
                 </div>
                 <div className={s.tagWrapper}>
-                </div>
-                <div className={s.tagWrapper}>
-                <h3>Characters:</h3>
-                    {characters.map(character =>
-                        <Link href={routes.characters + '/' + getLastNumberFromUrl(character)} key={character} className={s.tag}
-                        >{getLastNumberFromUrl(character)}</Link>
-                    )}
+                    <h3>Characters:</h3>
+                        {characters.map(character =>
+                            <Link href={routes.characters + '/' + getLastNumberFromUrl(character)} key={character} className={s.tag}
+                            >{getLastNumberFromUrl(character)}</Link>
+                        )}
                 </div>
             </div>
             <CardActions>

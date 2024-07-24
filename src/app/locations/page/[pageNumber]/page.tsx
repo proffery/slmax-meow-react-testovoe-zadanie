@@ -13,7 +13,7 @@ type Props = {
     }
 }
 
-export default async function CharactersPage({params}:Props) {
+export default async function LocationsPage({params}:Props) {
     const locationsData = await getData<LocationsResponse>(apiEndpoints.locationsByPage(+params.pageNumber),
         {cache: 'no-store'}
     )
