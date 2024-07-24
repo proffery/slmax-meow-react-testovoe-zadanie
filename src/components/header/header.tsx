@@ -84,7 +84,7 @@ function Header() {
                                         textAlign={'center'}
                                         sx={{
                                             fontFamily: 'var(--font-text)',
-                                            color: 'var(--background-light)'
+                                            color: 'var(--border-color)'
                                         }}
                                     >{page.label}</Typography>
                                 </MenuItem>
