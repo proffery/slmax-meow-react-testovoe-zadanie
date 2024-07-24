@@ -7,7 +7,7 @@ import Header from '@/components/header/header'
 import {Footer} from '@/components/footer/footer'
 
 export const metadata: Metadata = {
-  title: "Rick and Morty test task",
+  title: "Test task by Rick and Morty API",
   description: "Тестовое задание для СтилЛедиМакс, ЧП.",
 };
 

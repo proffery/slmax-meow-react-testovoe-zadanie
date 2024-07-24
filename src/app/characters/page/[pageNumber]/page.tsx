@@ -6,6 +6,7 @@ import {apiEndpoints} from '@/api/api-endpoints'
 import CharacterCard from '@/components/cards/character-card/character-card'
 import s from '../../../pages.module.css'
 import PaginationComponent from '@/components/pagination/pagination'
+import {generateStaticParamsArray} from '@/utils/generate-static-params-array'
 
 type Props = {
     params: {
@@ -13,12 +14,21 @@ type Props = {
     }
 }
 
+export const generateStaticParams  = async () => {
+    const pageData = await getData<CharactersResponse>(apiEndpoints.charactersByPage(1),
+        {revalidate: 60}
+    )
+    const pagesCount = pageData?.info.pages
+    return generateStaticParamsArray("pageNumber", pagesCount)
+}
+
 export default async function CharactersPage({params}:Props) {
     const charactersData = await getData<CharactersResponse>(apiEndpoints.charactersByPage(+params.pageNumber),
-        {cache: 'no-store'}
+        {revalidate: 60}
     )
     const results = charactersData?.results
     const pageInfo = charactersData?.info
+
 
     return (
     <Page>

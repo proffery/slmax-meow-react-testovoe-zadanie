@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {useState} from 'react'
 import Link from 'next/link';
 import {Page, pages} from '@/constants/pages';
+import {Revalidator} from '@/components/revalidator/revalidator'
 
 function Header() {
     const [anchorElNav, setAnchorElNav] = useState<any | null>(null);
@@ -127,6 +128,7 @@ function Header() {
                             </Button>
                         ))}
                     </Box>
+                    <Revalidator />
                 </Toolbar>
             </Container>
         </AppBar>

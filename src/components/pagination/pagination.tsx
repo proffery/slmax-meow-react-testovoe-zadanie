@@ -11,10 +11,11 @@ type Props = {
     count?: number;
     page?: number;
     boundaryCount?: number
+    siblingCount?: number
     type: 'Characters' | 'Episodes' | 'Locations'
 }
 
-export default function PaginationComponent({boundaryCount = 2, count, page, type}:Props) {
+export default function PaginationComponent({boundaryCount = 2, siblingCount = 1, count, page, type}:Props) {
     const router = useRouter()
 
     const handleChange = (event: ChangeEvent<unknown>, value: number) => {
@@ -27,6 +28,7 @@ export default function PaginationComponent({boundaryCount = 2, count, page, typ
         <Pagination
             count={count}
             boundaryCount={boundaryCount}
+            siblingCount={siblingCount}
             page={page}
             variant={'outlined'}
             shape={'rounded'}
