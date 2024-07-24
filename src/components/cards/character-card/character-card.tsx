@@ -3,7 +3,7 @@ import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import {Character} from '@/api/api-types'
-import s from './character-card.module.css'
+import s from '../card.module.css'
 import Link from 'next/link'
 import {routes} from '@/constants/routes'
 import {getLastNumberFromUrl} from '@/utils/get-last-number-from-url'

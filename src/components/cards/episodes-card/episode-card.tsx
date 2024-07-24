@@ -1,33 +1,51 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import {Episode} from '@/api/api-types'
+import s from '../card.module.css'
+import Link from 'next/link'
+import {routes} from '@/constants/routes'
+import {getLastNumberFromUrl} from '@/utils/get-last-number-from-url'
 
-export default function EpisodeCard() {
+type Props = {
+    episode: Episode
+}
+
+export default function EpisodesCard(props: Props) {
+    const {
+        name, id, episode, air_date, characters
+    } = props.episode;
+
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-                component="img"
-                alt="green iguana"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                </Typography>
-            </CardContent>
+        <div className={s.card}>
+            <div className={s.cardContent}>
+                <h2>{name}</h2>
+                <div className={s.tagWrapper}>
+                <h3>Episode Info:</h3>
+                    <span className={s.tag}>{name}</span>
+                    <span className={s.tag}>{air_date}</span>
+                    <span className={s.tag}>{episode}</span>
+                </div>
+                <div className={s.tagWrapper}>
+                </div>
+                <div className={s.tagWrapper}>
+                <h3>Characters:</h3>
+                    {characters.map(character =>
+                        <Link href={routes.characters + '/' + getLastNumberFromUrl(character)} key={character} className={s.tag}
+                        >{getLastNumberFromUrl(character)}</Link>
+                    )}
+                </div>
+            </div>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small"
+                        sx={{
+                            fontFamily: 'var(--font-text)',
+                            color: 'var(--text-color-secondary)',
+                        }}
+                        component={Link}
+                        href={routes.episodes + '/' + id}
+                >Learn More</Button>
             </CardActions>
-        </Card>
-    );
+        </div>
+    )
 }
