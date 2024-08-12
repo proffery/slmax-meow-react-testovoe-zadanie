@@ -39,7 +39,7 @@ export default async function CharacterPage({params}:Props) {
                 alt={characterData?.name}
                 src={characterData?.image}
                 sx={{
-                    maxWidth: 'var(--max-width)',
+                    maxWidth: 'clamp(400px, 50%, var(--max-width))',
                     borderRadius: 'var(--border-radius)',
                 }}
             />
